@@ -1,0 +1,9 @@
+# terraform 
+**/.terraform/**
+**/.terraform-version
+**/*.tfstate*
+**/*.tfstate.backup
+**/*.tfstate.*.backup
+**/*.tfvars
+**/outputs.json
+**/**.old
