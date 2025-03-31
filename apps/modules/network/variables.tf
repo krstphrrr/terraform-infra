@@ -26,9 +26,11 @@ variable "ingress_port" {
 variable "public_subnet_cidr_b" {
   type        = string
   description = "CIDR block for second public subnet"
+  default     = null
 }
 
 variable "availability_zone_b" {
   type        = string
   description = "Second AZ for public subnet"
+  default     = null
 }

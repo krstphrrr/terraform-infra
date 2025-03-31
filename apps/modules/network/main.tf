@@ -34,6 +34,8 @@ resource "aws_subnet" "public_a" {
 }
 
 resource "aws_subnet" "public_b" {
+  count = var.public_subnet_cidr_b != null && var.availability_zone_b != null ? 1 : 0
+
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_cidr_b
   availability_zone       = var.availability_zone_b
@@ -46,8 +48,10 @@ resource "aws_subnet" "public_b" {
   }
 }
 
+
 resource "aws_route_table_association" "public_b" {
-  subnet_id      = aws_subnet.public_b.id
+  count          = var.public_subnet_cidr_b != null && var.availability_zone_b != null ? 1 : 0
+  subnet_id      = aws_subnet.public_b[0].id
   route_table_id = aws_route_table.public.id
 }
 

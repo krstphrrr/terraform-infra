@@ -19,5 +19,8 @@ output "ecs_cluster_arn" {
 }
 
 output "subnet_ids" {
-  value = [aws_subnet.public_a.id, aws_subnet.public_b.id]
+  value = compact([
+    aws_subnet.public_a.id,
+    length(aws_subnet.public_b) > 0 ? aws_subnet.public_b[0].id : null
+  ])
 }

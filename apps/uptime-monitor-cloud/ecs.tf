@@ -91,6 +91,11 @@ resource "aws_ecs_task_definition" "uptime_monitor" {
     }
   ])
 
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes = [container_definitions]
+  }
+
   tags = {
     Name = "uptime-monitor-task"
     Project = "uptime-monitor"
