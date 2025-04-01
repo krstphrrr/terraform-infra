@@ -5,9 +5,9 @@ resource "aws_ecr_repository" "uptime_monitor" {
     scan_on_push = true
   }
 
-  lifecycle {
-    prevent_destroy = true
-  }
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 
   tags = {
     Name      = "uptime-monitor-ecr-repo"

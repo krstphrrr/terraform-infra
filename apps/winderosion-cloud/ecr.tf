@@ -5,9 +5,12 @@ resource "aws_ecr_repository" "angular" {
     scan_on_push = true
   }
 
-  lifecycle {
-    prevent_destroy = true
-  }
+  force_delete = true
+
+  # lifecycle {
+    # prevent_destroy = true
+  # }
+
 
   tags = {
     Name      = "winderosion-angular-ecr"

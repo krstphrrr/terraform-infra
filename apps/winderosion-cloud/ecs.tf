@@ -19,6 +19,16 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_policy" {
 }
 resource "aws_ecs_cluster" "angular" {
   name = "winderosion-angular-cluster"
+  tags = {
+    Name      = "winderosion-angular-cluster"
+    Project   = "winderosion-angular"
+    ManagedBy = "Terraform"
+  }
+  tags_all = {
+    Name      = "winderosion-angular-cluster"
+    Project   = "winderosion-angular"
+    ManagedBy = "Terraform"
+  }
 }
 
 resource "aws_ecs_task_definition" "angular" {
@@ -43,6 +53,7 @@ resource "aws_ecs_task_definition" "angular" {
       ]
     }
   ])
+
 }
 
 resource "aws_ecs_service" "angular" {
